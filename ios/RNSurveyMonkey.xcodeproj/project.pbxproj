@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0AF1F9FAA5BF871A4391B423 /* libPods-RNSurveyMonkey.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5FBF36EE03015C7B13A4DB5 /* libPods-RNSurveyMonkey.a */; };
-		B3E7B58A1CC2AC0600A0062D /* RNSurveyMonkey.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNSurveyMonkey.m */; };
 		F8765031238418C400E8F26A /* RNSurveyMonkeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8765030238418C400E8F26A /* RNSurveyMonkeyView.m */; };
+		F88ACFD523882DBD00443AE6 /* RNSurveyMonkeyViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F88ACFD423882DBD00443AE6 /* RNSurveyMonkeyViewManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,12 +27,12 @@
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNSurveyMonkey.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNSurveyMonkey.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DFD41354651153377599DF2 /* Pods-RNSurveyMonkey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNSurveyMonkey.debug.xcconfig"; path = "Target Support Files/Pods-RNSurveyMonkey/Pods-RNSurveyMonkey.debug.xcconfig"; sourceTree = "<group>"; };
-		B3E7B5881CC2AC0600A0062D /* RNSurveyMonkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSurveyMonkey.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* RNSurveyMonkey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSurveyMonkey.m; sourceTree = "<group>"; };
 		BA4FAB17DE4A0B408E1545A8 /* Pods-RNSurveyMonkey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNSurveyMonkey.release.xcconfig"; path = "Target Support Files/Pods-RNSurveyMonkey/Pods-RNSurveyMonkey.release.xcconfig"; sourceTree = "<group>"; };
 		E5FBF36EE03015C7B13A4DB5 /* libPods-RNSurveyMonkey.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNSurveyMonkey.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8765030238418C400E8F26A /* RNSurveyMonkeyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNSurveyMonkeyView.m; sourceTree = "<group>"; };
 		F8765032238418DE00E8F26A /* RNSurveyMonkeyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNSurveyMonkeyView.h; sourceTree = "<group>"; };
+		F88ACFD323882DBD00443AE6 /* RNSurveyMonkeyViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSurveyMonkeyViewManager.h; sourceTree = "<group>"; };
+		F88ACFD423882DBD00443AE6 /* RNSurveyMonkeyViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSurveyMonkeyViewManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +58,10 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				F88ACFD323882DBD00443AE6 /* RNSurveyMonkeyViewManager.h */,
+				F88ACFD423882DBD00443AE6 /* RNSurveyMonkeyViewManager.m */,
 				F8765032238418DE00E8F26A /* RNSurveyMonkeyView.h */,
 				F8765030238418C400E8F26A /* RNSurveyMonkeyView.m */,
-				B3E7B5881CC2AC0600A0062D /* RNSurveyMonkey.h */,
-				B3E7B5891CC2AC0600A0062D /* RNSurveyMonkey.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				72838E89519D1560D3D18222 /* Pods */,
 				E2ADB43FFB67053267F54AD4 /* Frameworks */,
@@ -168,8 +168,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3E7B58A1CC2AC0600A0062D /* RNSurveyMonkey.m in Sources */,
 				F8765031238418C400E8F26A /* RNSurveyMonkeyView.m in Sources */,
+				F88ACFD523882DBD00443AE6 /* RNSurveyMonkeyViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,70 +1,103 @@
 
 #import "RNSurveyMonkeyView.h"
-#import "RNSurveyMonkey.h"
+#import <React/RCTComponent.h>
+#import <SurveyMonkeyiOSSDK/SurveyMonkeyiOSSDK.h>
 
-@interface RNSurveyMonkeyView()
+static NSDictionary *SurveyMonkeyErrorJson(NSError *error) {
+  return @{
+    @"code": @(error.code),
+    @"description": error.userInfo[@"SurveyMonkeySDK_Error"],
+    @"fullDescription": error.description
+  };
+}
 
-@property (nonatomic, strong) RNSurveyMonkey *surveyMonkey;
+static UIColor *colorFromHexString(NSString *hexString) {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1];
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
+
+@interface RNSurveyMonkeyView() <SMFeedbackDelegate>
+
+
+@property (nonatomic, strong) SMFeedbackViewController *feedbackController;
+
+@property (strong, nonatomic) UIViewController *parentViewController;
+
+@property (copy, nonatomic) RCTBubblingEventBlock onRespondentDidEndSurvey;
+
 
 @end
 
 @implementation RNSurveyMonkeyView
 
-#pragma mark - UIView
+#pragma mark - Public
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    return self;
+- (void)presentSurveyMonkeyViewController {
+  [self.feedbackController presentFromViewController:self.parentViewController
+                                            animated:YES
+                                          completion:nil];
 }
 
-- (instancetype)initWithCoder:(NSCoder *)coder {
-    self = [super initWithCoder:coder];
-    return self;
+- (void)scheduleInterceptFromViewControllerWithTitle:(NSString *)title {
+    [self.feedbackController scheduleInterceptFromViewController:self.parentViewController
+                                                    withAppTitle:title];
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    if (!self.surveyMonkey.shouldPresent) {
-        return;
-    }
-    if (self.surveyMonkey.feedbackController) {
-        [self embed];
-    } else {
-        self.surveyMonkey.feedbackController.view.frame = self.bounds;
-    }
+- (void)scheduleInterceptFromViewControllerWithParams:(NSDictionary *)params {
+    [self.feedbackController scheduleInterceptFromViewController:self.parentViewController
+                                                      alertTitle:params[@"title"]
+                                                       alertBody:params[@"body"]
+                                             positiveActionTitle:params[@"positiveActionTitle"]
+                                                     cancelTitle:params[@"cancelTitle"]
+                                            afterInstallInterval:[params[@"afterInstallInterval"] doubleValue]
+                                             afterAcceptInterval:[params[@"afterAcceptInterval"] doubleValue]
+                                            afterDeclineInterval:[params[@"afterDeclineInterval"] doubleValue]];
 }
 
-#pragma mark - Private
+#pragma mark - Lazy
 
-- (void)embed {
-    UIViewController *parentVC = [self parentViewController];
-    if (parentVC) {
-        [parentVC addChildViewController:self.surveyMonkey.feedbackController];
-        [self addSubview:self.surveyMonkey.feedbackController.view];
-        self.surveyMonkey.feedbackController.view.frame = self.bounds;
-        [self.surveyMonkey.feedbackController didMoveToParentViewController:parentVC];
+- (SMFeedbackViewController *)feedbackController {
+  if (!_feedbackController) {
+    if (self.customVariables) {
+       _feedbackController = [[SMFeedbackViewController alloc] initWithSurvey:self.survey
+                                                           andCustomVariables:self.customVariables];
+     } else {
+       _feedbackController = [[SMFeedbackViewController alloc] initWithSurvey:self.survey];
+     }
+     _feedbackController.delegate = self;
+    if (self.cancelButtonTintColor) {
+      _feedbackController.cancelButtonTintColor = colorFromHexString(self.cancelButtonTintColor);
     }
+  }
+  return _feedbackController;
 }
 
 - (UIViewController *)parentViewController {
+  if (!_parentViewController) {
     UIResponder *parentResponder = self;
     while (parentResponder != nil) {
         parentResponder = parentResponder.nextResponder;
         if ([parentResponder isKindOfClass:[UIViewController class]]) {
-            UIViewController *viewController = (UIViewController *)parentResponder;
-            return viewController;
+          _parentViewController = (UIViewController *)parentResponder;
+          return _parentViewController;
         }
     }
-    return nil;
+  }
+  return _parentViewController;
 }
 
-#pragma mark - RCT
+#pragma mark - SMFeedbackDelegate
 
-- (dispatch_queue_t)methodQueue
-{
-    return dispatch_get_main_queue();
+- (void)respondentDidEndSurvey:(SMRespondent *)respondent error:(NSError *) error {
+  NSDictionary *payload = @{
+    @"respondent": respondent ? respondent.toJson : [NSNull null],
+    @"error": error ? SurveyMonkeyErrorJson(error) : [NSNull null]
+  };
+  self.onRespondentDidEndSurvey(payload);
 }
-RCT_EXPORT_MODULE()
 
 @end
   
