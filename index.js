@@ -1,6 +1,3 @@
+import SurveyMonkey from './src/survey_monkey';
 
-import { NativeModules } from 'react-native';
-
-const { RNSurveyMonkey } = NativeModules;
-
-export default RNSurveyMonkey;
+export default SurveyMonkey;
