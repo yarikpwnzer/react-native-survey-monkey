@@ -26,5 +26,5 @@ target 'RNSurveyMonkey' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'surveymonkey-ios-sdk', '~> 2.0'
+  pod 'surveymonkey-ios-sdk', path: '../../'
 end
