@@ -34,6 +34,7 @@ project.xcworkspace
 ios/Podfile
 ios/RNSurveyMonkey.xcworkspace
 ios/Podfile.lock      
+ios/RNSurveyMonkey.podspec
 
 # Android/IntelliJ
 #
