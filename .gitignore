@@ -58,4 +58,7 @@ Carthage/Build
 buck-out/
 \.buckd/
 *.keystore
+
+# vscode
+.vscode/
       
