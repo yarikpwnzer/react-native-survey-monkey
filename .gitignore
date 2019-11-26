@@ -29,7 +29,6 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
-ios/RNSurveyMonkey.xcworkspace/
       
 
 # Android/IntelliJ
