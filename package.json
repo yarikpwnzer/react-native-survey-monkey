@@ -3,6 +3,7 @@
   "name": "react-native-survey-monkey",
   "version": "1.0.0",
   "description": "React Native library for Survey Monkey",
+  "homepage": "https://www.surveymonkey.com",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
