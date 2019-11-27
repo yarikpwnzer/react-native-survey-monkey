@@ -89,7 +89,7 @@ import {
 } from 'react-native';
 
 export default class Example extends PureComponent {
-    constructor(props) {
+  constructor(props) {
     super(props);
     
     this.onTouch = this.onTouch.bind(this);
