@@ -1,5 +1,5 @@
 
-# Survey Monkey for React Native
+# Survey Monkey for React Native (react-native-survey-monkey)
   
 Platforms:
 - iOS
