@@ -3,7 +3,7 @@
   
 Platforms:
 - iOS
-- Android (comming soon in few days)
+- Android
 
 ## Installation
 
@@ -67,11 +67,9 @@ Find `Search Paths` and add `$(SRCROOT)/../node_modules/react-native-survey-monk
 
 ### Android
 
-Not ready in this version of library, will be ready in couple days.
+The Android version doesn't require additional changes, please note that that minSdk for this library is Api 21 (Android 5.x).
 
 ## Usage
-
-We have three important components to understand:
 
 ```javascript
 import SurveyMonkey from 'react-native-survey-monkey';
@@ -134,7 +132,7 @@ Getting respondent data:
   />
 ````
 
-'Cancel' button tint color:
+'Cancel' button tint color (iOS only):
 
 ````javascript
   <SurveyMonkey
@@ -178,3 +176,4 @@ Schedule Intercept with Params (ios: scheduleInterceptFromViewControllerWithPara
 ## Contact
 
 - Yaroslav Fuchko (iOS) <yarikpwnzer1@gmail.com>
+- Richard Mozes (Android) <rmozes2@gmail.com>
