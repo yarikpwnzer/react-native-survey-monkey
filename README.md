@@ -175,5 +175,5 @@ Schedule Intercept with Params (ios: scheduleInterceptFromViewControllerWithPara
 
 ## Contact
 
-- Yaroslav Fuchko (iOS) <yarikpwnzer1@gmail.com>
+- Yaroslav Fuchko (iOS) <yarikpwnzer@gmail.com>
 - Richard Mozes (Android) <rmozes2@gmail.com>
