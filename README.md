@@ -12,13 +12,13 @@ Platforms:
 #### Option A: yarn
 
 ```shell
-yarn add https://github.com/yarikpwnzer/react-native-survey-monkey
+yarn add react-native-survey-monkey
 ```
 
 #### Option B: npm
 
 ```shell
-npm install https://github.com/yarikpwnzer/react-native-survey-monkey --save
+npm install react-native-survey-monkey --save
 ```
 
 ### iOS
@@ -95,7 +95,7 @@ export default class Example extends PureComponent {
   }
   
   onTouch() {
-    this.surveyRef.current.showSurveyMonkey('some hash');
+    this.surveyMonkeyRef.current.showSurveyMonkey('some hash');
   }
 
   render() {
