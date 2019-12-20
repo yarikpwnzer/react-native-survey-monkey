@@ -16,7 +16,7 @@ export default class SurveyMonkey extends PureComponent {
   };
 
   static defaultProps = {
-    onRespondentDidEndSurvey: false,
+    onRespondentDidEndSurvey: null,
     cancelButtonTintColor: null
   }
 
