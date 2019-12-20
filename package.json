@@ -6,7 +6,7 @@
     "Yaroslav Fuchko <yarikpwnzer1@gmail.com>",
     "Ricahrd Mozes <rmozes2@gmail.com>"
   ],
-  "homepage": "https://www.surveymonkey.com",
+  "homepage": "https://github.com/yarikpwnzer/react-native-survey-monkey",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
