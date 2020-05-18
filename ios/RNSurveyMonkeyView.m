@@ -4,9 +4,12 @@
 #import <SurveyMonkeyiOSSDK/SurveyMonkeyiOSSDK.h>
 
 static NSDictionary *SurveyMonkeyErrorJson(NSError *error) {
+  NSDictionary *userInfo = error.userInfo;
+  BOOL surveyError = userInfo[@"SurveyMonkeySDK_Error"];
+  NSString *errorDescription = surveyError ? error.userInfo[@"SurveyMonkeySDK_Error"] : error.localizedDescription;
   return @{
     @"code": @(error.code),
-    @"description": error.userInfo[@"SurveyMonkeySDK_Error"],
+    @"description": errorDescription,
     @"fullDescription": error.description
   };
 }
