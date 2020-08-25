@@ -1,5 +1,5 @@
 
-package com.reactlibrary;
+package com.surveymonkey;
 
 import android.app.Activity;
 import android.content.Intent;
