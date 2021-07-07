@@ -60,20 +60,18 @@ static UIColor *colorFromHexString(NSString *hexString) {
                                             afterDeclineInterval:[params[@"afterDeclineInterval"] doubleValue]];
 }
 
-#pragma mark - Lazy
+#pragma mark - Setter
 
 - (SMFeedbackViewController *)feedbackController {
-  if (!_feedbackController) {
-    if (self.customVariables) {
-       _feedbackController = [[SMFeedbackViewController alloc] initWithSurvey:self.survey
-                                                           andCustomVariables:self.customVariables];
-     } else {
-       _feedbackController = [[SMFeedbackViewController alloc] initWithSurvey:self.survey];
-     }
-     _feedbackController.delegate = self;
-    if (self.cancelButtonTintColor) {
-      _feedbackController.cancelButtonTintColor = colorFromHexString(self.cancelButtonTintColor);
-    }
+  if (self.customVariables) {
+    _feedbackController = [[SMFeedbackViewController alloc] initWithSurvey:self.survey
+                                                        andCustomVariables:self.customVariables];
+  } else {
+    _feedbackController = [[SMFeedbackViewController alloc] initWithSurvey:self.survey];
+  }
+  _feedbackController.delegate = self;
+  if (self.cancelButtonTintColor) {
+    _feedbackController.cancelButtonTintColor = colorFromHexString(self.cancelButtonTintColor);
   }
   return _feedbackController;
 }
