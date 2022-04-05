@@ -166,7 +166,7 @@ public class RNSurveyMonkeyModule extends ReactContextBaseJavaModule {
     private final ActivityEventListener activityEventListener = new ActivityEventListener() {
         @Override
         public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
-            if (requestCode != REQUEST_CODE || resultCode == Activity.RESULT_CANCELED || data == null)
+            if (requestCode != REQUEST_CODE || data == null)
                 return;
 
             if (resultCode == Activity.RESULT_OK) {
