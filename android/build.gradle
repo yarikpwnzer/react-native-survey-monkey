@@ -1,19 +1,8 @@
+apply plugin: 'com.android.library'
+
 def safeExtGet(prop, fallback) {
     rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
 }
-
-buildscript {
-    repositories {
-        mavenCentral()
-        google()
-    }
-
-    dependencies {
-        classpath("com.android.tools.build:gradle:3.4.2")
-    }
-}
-
-apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion safeExtGet('compileSdkVersion', 28)
@@ -33,14 +22,14 @@ android {
 repositories {
     mavenCentral()
     google()
-//    maven {
-//        // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-//        url "$rootDir/../node_modules/react-native/android"
-//    }
+    maven {
+        url './libs'
+    }
 }
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-    implementation 'com.surveymonkey:surveymonkey-android-sdk:2.0.0'
+//     implementation 'com.surveymonkey:surveymonkey-android-sdk:2.0.0'
+    implementation(group: 'com.surveymonkey', name:'surveymonkey-android-sdk', version: '2.0.0')
 }
   

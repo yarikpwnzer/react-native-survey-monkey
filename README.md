@@ -67,7 +67,29 @@ Find `Search Paths` and add `$(SRCROOT)/../node_modules/react-native-survey-monk
 
 ### Android
 
-The Android version doesn't require additional changes, please note that that minSdk for this library is Api 21 (Android 5.x).
+The SDK requires a custom __`maven url`__ in the root __`android/build.gradle`__:
+
+### :open_file_folder: **`android/build.gradle`**
+
+```diff
+allprojects {
+    repositories {
+        mavenLocal()
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url("$rootDir/../node_modules/react-native/android")
+        }
+        maven {
+            // Android JSC is installed from npm
+            url("$rootDir/../node_modules/jsc-android/dist")
+        }
++       maven {
++           // react-native-survey-monkey
++           url("${project(':react-native-survey-monkey').projectDir}/libs")
++       }
+    }
+}
+```
 
 ## Usage
 
