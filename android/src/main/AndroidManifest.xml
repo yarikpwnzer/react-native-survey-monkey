@@ -1,5 +1,13 @@
-
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.surveymonkey">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.surveymonkey">
+
+    <application android:allowBackup="true">
+        <activity
+            android:name="com.surveymonkey.surveymonkeyandroidsdk.SMFeedbackActivity"
+            android:exported="false"
+            tools:node="merge" />
+    </application>
 
 </manifest>
